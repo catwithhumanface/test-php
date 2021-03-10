@@ -7,7 +7,7 @@ class UserModel extends Model
         // Sanitize Post
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-
+        
         $password = md5($post['password']);
 
         if ($post['submit']) {
@@ -15,17 +15,24 @@ class UserModel extends Model
                 Messages::setMsg('Please complete all fields', 'error');
                 return;
             }
-
-            // Insert into MySQL
-            $this->query('INSERT INTO users(name, email, password) VALUES(:name, :email, :password)');
-            $this->bind(':name', $post['name']);
+            //Verify the email address if used already
+            $this->query('SELECT * FROM users WHERE email=:email');
             $this->bind(':email', $post['email']);
-            $this->bind(':password', $password);
-            $this->execute();
-
-            // Verify
-            if ($this->lastInsertId()) {
-                Messages::setMsg('Successfully registered', 'error');
+            $row = $this->single();
+            if (!$row) {
+                // Insert into MySQL
+                $this->query('INSERT INTO users(name, email, password) VALUES(:name, :email, :password)');
+                $this->bind(':name', $post['name']);
+                $this->bind(':email', $post['email']);
+                $this->bind(':password', $password);
+                $this->execute();
+                // Verify
+                if ($this->lastInsertId()) {
+                    //changed type to sucess instead of error
+                    Messages::setMsg('Successfully registered', 'success');
+                }
+            }else{
+                Messages::setMsg('Email address already exists. Please use another one.', 'error');
             }
         }
         return;

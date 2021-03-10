@@ -19,6 +19,7 @@ require('models/home.php');
 require('models/blog.php');
 require('models/user.php');
 
+
 new Install();
 
 $bootstrap = new Bootstrap($_GET);

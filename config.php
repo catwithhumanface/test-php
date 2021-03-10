@@ -8,4 +8,4 @@ define("DB_NAME", "php-test"); // The name of the database you created for this 
 
 // Enter the domain and path to this test
 // e.g. http://localhost/php-test/
-define("ROOT_URL", "http://phptest.internal/");
+define("ROOT_URL", "http://test/");
