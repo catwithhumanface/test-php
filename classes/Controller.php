@@ -4,6 +4,7 @@ abstract class Controller
 {
     protected $request;
     protected $action;
+    protected $id;
 
     public function __construct($action, $request)
     {

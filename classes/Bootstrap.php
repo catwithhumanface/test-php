@@ -5,6 +5,7 @@ class Bootstrap
     private $controller;
     private $action;
     private $request;
+    private $id;
 
     public function __construct($request)
     {
@@ -15,10 +16,11 @@ class Bootstrap
             $this->controller = $this->request['controller'];
         }
         if ($this->request['action'] == "") {
-            $this->action = 'index';
+            $this->action = 'Index';
         } else {
             $this->action = $this->request['action'];
         }
+       
     }
 
 

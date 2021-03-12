@@ -55,7 +55,8 @@ class UserModel extends Model
             if ($row) {
                 $_SESSION['is_logged_in'] = true;
                 $_SESSION['user_data'] = array(
-                    "id" => $row['id'],
+                    //error name of colone id_user
+                    "id_user" => $row['id_user'],
                     "name" => $row['name'],
                     "email" => $row['email']
                 );
