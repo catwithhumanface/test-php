@@ -134,7 +134,6 @@ class BlogModel extends Model
             }
             // file upload if exists
             if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK){
-               
                 
                 // Verify if there was a photo attached before
                 // If exists, delete it
