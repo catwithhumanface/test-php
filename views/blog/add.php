@@ -34,7 +34,6 @@
 		thumbnail.src=URL.createObjectURL(event.target.files[0]);
 	}
 </script>
-
 <?php
     if(isset($_SESSION['alertMessage'])){
         echo "<script type='text/javascript'>

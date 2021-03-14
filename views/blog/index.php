@@ -1,6 +1,8 @@
 <div>
-    <?php if (isset($_SESSION['is_logged_in'])) : 
-        $pageCount =1;
+    <?php 
+    $pageCount =0;
+    if (isset($_SESSION['is_logged_in'])) : 
+        //$pageCount =1;
         $iduserStr =  $_SESSION['user_data']['id_user'];
         $iduser = (int)$iduserStr;?>
         <a class="btn btn-success btn-share" href="<?php echo ROOT_URL; ?>blog/add">Add a blog post</a>
@@ -49,10 +51,7 @@
             </li>
         <?php } ?>
     </ul>
-        
-
 </div>
-
 <?php
     if(isset($_SESSION['alertMessage'])){
         echo "<script type='text/javascript'>

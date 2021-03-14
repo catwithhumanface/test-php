@@ -6,8 +6,6 @@ class UserModel extends Model
     {
         // Sanitize Post
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-        
         $password = md5($post['password']);
 
         if ($post['submit']) {

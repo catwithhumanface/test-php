@@ -92,7 +92,7 @@ class BlogModel extends Model
 
         if (in_array($fileExtension, $allowedfileExtensions)){
           
-          // directory in which the uploaded file will be moved
+            // directory in which the uploaded file will be moved
             $uploadFileDir = './uploaded_files/';
             //$uploadFileDir= realpath("/uploaded_files/readme.txt");
             $dest_path = $uploadFileDir . $newFileName;
@@ -102,11 +102,13 @@ class BlogModel extends Model
 
             }else{
                 $_SESSION['alertMessage'] = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
-                return;
+                header('Location: ' . ROOT_URL. 'blog');
+                $this->index();
             }
         }else{
             $_SESSION['alertMessage'] = 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
-          return;
+            header('Location: ' . ROOT_URL. 'blog');
+            $this->index();
         }
   }
 
@@ -154,7 +156,7 @@ class BlogModel extends Model
                     $this->execute();
                     header('Location: ' . ROOT_URL. 'blog');
                 }catch(Exception $e){
-                    $_SESSION['alertMessage'] = 'T.';
+                    $_SESSION['alertMessage'] = 'Failed to add a post.';
                     header('Location: ' . ROOT_URL. 'blog');
                 }
                 
@@ -169,7 +171,8 @@ class BlogModel extends Model
                     $this->execute();
                     header('Location: ' . ROOT_URL. 'blog');
                 }catch(Exception $e){
-                    header('location:'.$_SERVER['HTTP_REFERER']);
+                    $_SESSION['alertMessage'] = 'Failed to add a post.';
+                    header('Location: ' . ROOT_URL. 'blog');
                 }
             }
            

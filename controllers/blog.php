@@ -13,7 +13,6 @@ class Blog extends Controller
         $this->ReturnView($viewmodel->Index($currentPage), true);
     }
     
-    
     protected function add()
     {
         if (!isset($_SESSION['is_logged_in'])) {

@@ -21,3 +21,12 @@
         </form>
     </div>
 </div>
+<?php
+    if(isset($_SESSION['alertMessage'])){
+        echo "<script type='text/javascript'>
+        alert('" . $_SESSION['alertMessage'] . "');
+        </script>";
+        //to not make the error message appear again after refresh:
+        unset($_SESSION['alertMessage']);
+    }
+ ?>
