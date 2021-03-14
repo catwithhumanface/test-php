@@ -17,7 +17,7 @@ class Blog extends Controller
     protected function add()
     {
         if (!isset($_SESSION['is_logged_in'])) {
-            header('Location: ' . ROOT_URL . 'shares');
+            header('Location: ' . ROOT_URL . 'users/login');
         }
         $viewmodel = new BlogModel();
         $this->ReturnView($viewmodel->add(), true);
@@ -26,7 +26,7 @@ class Blog extends Controller
     protected function edit()
     {
         if (!isset($_SESSION['is_logged_in'])) {
-            header('Location: ' . ROOT_URL . 'shares');
+            header('Location: ' . ROOT_URL . 'users/login');
         }
         if(isset($_GET["id_blog"]) && !empty($_GET["id_blog"])){
             $id_blog = (int) $_GET["id_blog"];
@@ -38,7 +38,7 @@ class Blog extends Controller
     protected function editSubmit()
     {
         if (!isset($_SESSION['is_logged_in'])) {
-            header('Location: ' . ROOT_URL . 'shares');
+            header('Location: ' . ROOT_URL . 'users/login');
         }
         $viewmodel = new BlogModel();
         $this->ReturnView($viewmodel->editsubmit(), true);

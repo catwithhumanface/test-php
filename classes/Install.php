@@ -12,9 +12,11 @@ class Install
               `link` text NOT NULL,
               `id_user` int(11) NOT NULL,
               `create_date` datetime NOT NULL DEFAULT current_timestamp,
+              `imgurl`  varchar(255) NULL,
               PRIMARY KEY (`id_blog`)
             );";
         //added a DATETIME column instead of a DATE column to avoid Syntax error
+        //added a imgurl column
         
         $sql .= "CREATE TABLE IF NOT EXISTS `users` (
               `id_user` int(11) NOT NULL AUTO_INCREMENT,
@@ -23,7 +25,6 @@ class Install
               `password` varchar(255) NOT NULL,
               PRIMARY KEY (`id_user`)
             );";
-
         $stmt = $this->dbh->prepare($sql);
         $stmt->execute();
         
